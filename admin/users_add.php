@@ -6,24 +6,24 @@ include( 'includes/functions.php' );
 
 secure();
 
-if( isset( $_POST['first'] ) )
+if( isset( $_POST['firstName'] ) )
 {
   
-  if( $_POST['first'] and $_POST['last'] and $_POST['email'] and $_POST['password'] )
+  if( $_POST['firstName'] and $_POST['lastName'] and $_POST['email'] and $_POST['password'] )
   {
     
     $query = 'INSERT INTO users (
-        first,
-        last,
+        firstName,
+        lastName,
         email,
         password,
-        status
+        active
       ) VALUES (
-        "'.mysqli_real_escape_string( $connect, $_POST['first'] ).'",
-        "'.mysqli_real_escape_string( $connect, $_POST['last'] ).'",
+        "'.mysqli_real_escape_string( $connect, $_POST['firstName'] ).'",
+        "'.mysqli_real_escape_string( $connect, $_POST['lastName'] ).'",
         "'.mysqli_real_escape_string( $connect, $_POST['email'] ).'",
         "'.md5( $_POST['password'] ).'",
-        "'.$_POST['status'].'"
+        "'.$_POST['active'].'"
       )';
     mysqli_query( $connect, $query );
     
@@ -44,13 +44,13 @@ include( 'includes/header.php' );
 
 <form method="post">
   
-  <label for="first">First Name:</label>
-  <input type="text" name="first" id="first">
+  <label for="firstName">First Name:</label>
+  <input type="text" name="firstName" id="firstName">
   
   <br>
   
-  <label for="last">Last Name:</label>
-  <input type="text" name="last" id="last">
+  <label for="lastName">Last Name:</label>
+  <input type="text" name="lastName" id="lastName">
   
   <br>
   

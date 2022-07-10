@@ -14,15 +14,15 @@ if( !isset( $_GET['id'] ) )
   
 }
 
-if( isset( $_POST['first'] ) )
+if( isset( $_POST['firstName'] ) )
 {
   
-  if( $_POST['first'] and $_POST['last'] and $_POST['email'] )
+  if( $_POST['firstName'] and $_POST['lastName'] and $_POST['email'] )
   {
     
     $query = 'UPDATE users SET
-      first = "'.mysqli_real_escape_string( $connect, $_POST['first'] ).'",
-      last = "'.mysqli_real_escape_string( $connect, $_POST['last'] ).'",
+      firstName = "'.mysqli_real_escape_string( $connect, $_POST['firstName'] ).'",
+      lastName = "'.mysqli_real_escape_string( $connect, $_POST['lastName'] ).'",
       email = "'.mysqli_real_escape_string( $connect, $_POST['email'] ).'",
       active = "'.$_POST['active'].'"
       WHERE id = '.$_GET['id'].'
@@ -79,13 +79,13 @@ include( 'includes/header.php' );
 
 <form method="post">
   
-  <label for="first">First:</label>
-  <input type="text" name="first" id="first" value="<?php echo htmlentities( $record['first'] ); ?>">
+  <label for="firstName">First Name:</label>
+  <input type="text" name="firstName" id="firstName" value="<?php echo htmlentities( $record['firstName'] ); ?>">
   
   <br>
   
-  <label for="last">Last:</label>
-  <input type="text" name="last" id="last" value="<?php echo htmlentities( $record['last'] ); ?>">
+  <label for="lastName">Last Name:</label>
+  <input type="text" name="lastName" id="lastName" value="<?php echo htmlentities( $record['lastName'] ); ?>">
   
   <br>
   

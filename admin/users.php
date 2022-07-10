@@ -25,8 +25,7 @@ include( 'includes/header.php' );
 
 $query = 'SELECT *
   FROM users 
-  '.( ( $_SESSION['id'] != 1 and $_SESSION['id'] != 4 ) ? 'WHERE id = '.$_SESSION['id'].' ' : '' ).'
-  ORDER BY last,first';
+  ORDER BY lastName,firstName';
 $result = mysqli_query( $connect, $query );
 
 ?>
@@ -45,7 +44,7 @@ $result = mysqli_query( $connect, $query );
   <?php while( $record = mysqli_fetch_assoc( $result ) ): ?>
     <tr>
       <td align="center"><?php echo $record['id']; ?></td>
-      <td align="left"><?php echo htmlentities( $record['first'] ); ?> <?php echo htmlentities( $record['last'] ); ?></td>
+      <td align="left"><?php echo htmlentities( $record['firstName'] ); ?> <?php echo htmlentities( $record['lastName'] ); ?></td>
       <td align="left"><a href="mailto:<?php echo htmlentities( $record['email'] ); ?>"><?php echo htmlentities( $record['email'] ); ?></a></td>
       <td align="center"><a href="users_edit.php?id=<?php echo $record['id']; ?>">Edit</a></td>
       <td align="center">
